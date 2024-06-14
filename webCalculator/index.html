@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Human Age Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Human Age Calculator</h1>
+        
+        <div>
+            <label for="">Enter date of birth</label>
+            <input type="date" id="inputDob" value="1990-01-01" />
+        </div>
+        
+        <div>
+            <label for="">Enter current date</label>
+            <input type="date" id="conDate" value="" />
+        </div>
+
+        <button onclick="getDOB()">Calculate</button>
+        <div id="currentAge"></div>
+    </div>
+</body>
+</html>
+
+<!-- javascript functionality -->
+<script>
+    function getDOB(){
+
+     let dob = new Date(document.getElementById("inputDob").value);
+     let day = dob.getDate();
+     let month = dob.getMonth();
+     let year = dob.getFullYear();
+
+     let currentDate = new Date(document.getElementById("conDate").value);
+     console.log(currentDate);
+    //  for current date
+     let yearDiff = currentDate.getFullYear()- year;
+     let monthDiff = currentDate.getMonth() - month;
+     let dateDiff = currentDate.getDay() - day;
+
+      // Calculating the Age
+    if (yearDiff < 0) console.log("invalid date");
+    else if (monthDiff > 0) {
+        console.log(yearDiff);
+    } else if (monthDiff === 0 && dateDiff >= 0) {
+        console.log(yearDiff);
+    } else {
+        yearDiff = yearDiff - 1;
+        if (monthDiff <= 0)
+            if (dateDiff > 0) monthDiff = 12 + monthDiff;
+            else monthDiff = 11 - monthDiff;
+    }
+    if (dateDiff < 0) {
+        dateDiff = 30 + dateDiff;
+        monthDiff -= 1;
+    }
+
+    // Show calculated age as output
+    // and invalid if wrong input is given
+    if (yearDiff < 0)
+        document.getElementById("currentAge").innerHTML = "Invalid Date";
+    else
+        document.getElementById("currentAge").innerHTML =
+            "Your current Age is " + yearDiff + " years "
+            + monthDiff + " months " + dateDiff + " days";
+}
+
+// Function to provide default date value
+function currentDate() {
+    console.log(formatted());
+    let d = document.getElementById("conDate");
+    d.value = formatted();
+}
+
+function formatted(date = new Date()) {
+    return [
+        date.getFullYear(),
+        short(date.getMonth() + 1),
+        short(date.getDate()),
+    ].join("-");
+}
+function short(num) {
+    return num.toString().padStart(2, "0");
+}
+
+// Calling current date function
+// to set default date value
+currentDate();
+    
+</script>

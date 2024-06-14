@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    display: flex;
+    background-color: #fbf5f2;
+}
+
+.container{
+    margin-top: 100px;
+    margin-bottom: 500px;
+    margin-left: 500px;
+    padding: 80px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ffdb58;
+}
+
+h1{
+    
+    margin-bottom: 20px;
+}
+
+div{
+    
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+button{
+    position: relative;
+    margin-left: 150px;
+    margin-top: 15px;
+    padding:20px;
+    background-color: green;
+    
+    border-radius: 5px;
+   font-size: medium;
+   font-weight: 400;
+   cursor: pointer;
+}
+
+button:hover{
+    transition: 0.5s infinite;
+    background-color: rgb(247, 52, 52);
+}
+
+#currentAge{
+    font-size: medium;
+    margin: 10px;
+}
